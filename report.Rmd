@@ -37,7 +37,7 @@ status, maternal age, and race.
 
 
 # Objective 1:
-### Table 1 of birth characteristics
+### Table 1: Birth characteristics
 
 The sample included a total of 46,529 births with complete information on the
 exposure, outcome, and covariates. Overall, 11% of births were preterm and
@@ -87,7 +87,7 @@ knitr::include_graphics(
 
 
 # Objective 3:
-### Association between prenatal care visit attendance and preterm birth incidence
+### Table 2: Association between prenatal care visit attendance and preterm birth incidence
 
 Below are the log binomial regression results for the effect of prenatal care
 visit attendance on preterm birth incidence after adjusting for smoking status,
