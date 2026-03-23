@@ -1,0 +1,4 @@
+output/*.rds
+output/*.png
+report.html
+raw_data/birthsamp.RData

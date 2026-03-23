@@ -1,0 +1,109 @@
+---
+title: "Analysis of Prenatal Care Visit Attendance and Preterm Birth"
+author: "Eleane Lema"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r, set-default-code-chunk-opts, echo = FALSE}
+library(knitr)
+
+opts_chunk$set(
+  echo = FALSE,     # suppress code chunks
+  warning = FALSE,  # suppress warnings
+  message = FALSE  # suppress messages
+)
+
+```
+
+# Introduction
+This report analyzes a birth certificate dataset provided through the 
+RSPH online course, Introduction to Data Analysis: A Self-Guided
+Project. The dataset includes 80,015 births and has information on various 
+maternal characteristics (race, ethnicity, age, 
+smoking status), prenatal care use (month of first prenatal care visit, # of 
+prenatal care visits), multiple births, gestational age at birth, and the 
+version of the birth certificate.
+
+The analysis objectives of this report are to:
+
+1. Create a Table 1 to display birth characteristics stratified by prenatal
+care visit attendance.
+2. Plot the incidence of preterm birth (< 37 gestational age in weeks)
+across varying levels of prenatal care visit attendance.
+3. Fit a regression model to estimate the association between prenatal care
+visit attendance and incidence of preterm birth after adjusting for smoking
+status, maternal age, and race.
+
+
+# Objective 1:
+### Table 1 of birth characteristics
+
+The sample included a total of 46,529 births with complete information on the
+exposure, outcome, and covariates. Overall, 11% of births were preterm and
+13% were to mothers who had smoked during their pregnancy. The majority of
+births were to White mothers (82%) and mothers aged 20-29 years old (55%).
+
+More than half (57%) of births were to mothers who attended less than 12
+prenatal care visits. These mothers did not meet the recommended frequency of 12
+to 14 visits according to [clinical guidelines](https://pmc.ncbi.nlm.nih.gov/articles/PMC10366963/).
+Characteristics were similar between births with varying levels of prenatal care
+attendance. However, mothers who attended less than 12 prenatal care visits
+were more likely to experience preterm births compared to mothers who attended
+more visits.
+
+
+```{r, table-one}
+here::i_am("report.Rmd")
+
+table_one <- readRDS(
+  file = here::here("output/table_one.rds")
+)
+
+table_one
+```
+
+
+
+# Objective 2:
+### Bar plot of preterm birth incidence by prenatal care visit attendance
+
+The bar plot below shows preterm birth incidence by the number of prenatal care 
+visits attended. Mothers who met or exceeded the recommended number of visits
+(at least 12) had preterm birth rates of about 7–8%. In contrast, mothers who
+attended fewer than 12 visits had a preterm birth rate of approximately 14%,
+nearly twice as high as those who met the recommendation.
+
+```{r, bar-plot}
+#| fig.align = "center",
+#| out.width = "600px"
+
+knitr::include_graphics(
+  path = here::here("output/bar_plot.png")
+)
+
+
+```
+
+
+# Objective 3:
+### Association between prenatal care visit attendance and preterm birth incidence
+
+Below are the log binomial regression results for the effect of prenatal care
+visit attendance on preterm birth incidence after adjusting for smoking status,
+maternal age, and race. Compared to mothers who attended less than 12 prenatal
+care visits, mothers who met or exceeded the recommended number of visits had
+significantly lower risk of preterm birth. Mothers who completed 12 to 14 prenatal
+care visits had 48% lower risk of preterm birth and mothers who completed 15 or
+more visits had 37% lower risk of preterm birth.
+
+```{r, regression-analysis}
+
+regression_table <- readRDS(
+  file = here::here("output/regression_table.rds")
+)
+
+regression_table
+
+```
+
