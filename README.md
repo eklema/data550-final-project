@@ -9,13 +9,16 @@ project for a course (DATA 550: Data Science Toolkit) during my MPH program.
 ## Repository contents
 The file organization for this repository is as follows:
 
-1. **/code**: includes all R scripts for cleaning data, creating tables and
-figures, and rendering the report
-2. **/output**: includes all analytic output created from the code scripts
-3. **/raw_data**: includes raw data file (DO NOT EDIT THIS DIRECTLY)
-4. **codebook.xlsx**: descriptions for all the variables in the data set
-5. **report.Rmd** and **report.html**: R Markdown file for knitting the analysis
-report as an html document
+1. **code/**: stores all R scripts
+  - code/01_clean_data.R: cleans the raw data and prepares it for analysis
+  - code/02_table_one.R: produces Table 1
+  - code/03_bar_plot.R: produces a bar plot
+  - code/04_regression.R: runs a regression model and saves the results in a table
+  - code/05_render_report.R: renders the final report as an html document
+2. **output/**: stores all analytic output created from the code scripts
+3. **raw_data/**: stores raw data in a .RData file
+4. **codebook.xlsx**: includes descriptions for all the variables in the data set
+5. **report.Rmd**: includes the contents of the report
 6. **Makefile**: includes rules for building the analysis report and its components
 
 ## How to generate the analysis report 
