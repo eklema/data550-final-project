@@ -1,16 +1,12 @@
----
-title: Analysis of Prenatal Care Visit Attendance and Preterm Birth
-author: Eleane Lema
-output: github_document
----
+# Analysis of Prenatal Care Visit Attendance and Preterm Birth
+Eleane Lema
 
-# Introduction
+## Introduction
 This data analysis project uses birth certificate data to measure the relationship
 between prenatal care visit attendance and preterm birth. I completed this
 project for a course (DATA 550: Data Science Toolkit) during my MPH program. 
 
-
-# Repository contents
+## Repository contents
 The file organization for this repository is as follows:
 
 1. **/code**: includes all R scripts for cleaning data, creating tables and
@@ -22,8 +18,7 @@ figures, and rendering the report
 report as an html document
 6. **Makefile**: includes rules for building the analysis report and its components
 
-
-# How to generate the analysis report 
+## How to generate the analysis report 
 The analysis report contains an introduction to the data set and presents
 descriptive and regression results for the effect of prenatal care visit attendance
 on the risk of preterm birth.
