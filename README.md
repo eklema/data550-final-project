@@ -20,6 +20,16 @@ The file organization for this repository is as follows:
 4. **codebook.xlsx**: includes descriptions for all the variables in the data set
 5. **report.Rmd**: outlines the contents of the report
 6. **Makefile**: includes rules for building the analysis report and its components
+7. **renv.lock**: lists all the packages (and the versions) that are used in
+the project
+8. **renv/**: stores files for activating the project library
+
+
+## How to synchronize project library with the lockfile
+To synchronize your project library with the lockfile, execute
+**make install** in a terminal application. You should then receive a message
+confirming that your library is synced with the lockfile.
+
 
 ## How to generate the analysis report 
 The analysis report contains an introduction to the data set and presents

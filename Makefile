@@ -22,6 +22,10 @@ descriptive_analysis: output/table_one.rds output/bar_plot.png
 .PHONY: regression_analysis
 regression_analysis: output/regression_table.rds
 
+.PHONY: install
+install:
+	Rscript -e "renv::restore(prompt = FALSE)"
+	
 .PHONY: clean
 clean:
 	rm -f output/*.rds && rm -f output/*.png && rm -f *.html
