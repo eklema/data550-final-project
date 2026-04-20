@@ -14,12 +14,14 @@ str(birthsamp$uprevis)
 str(birthsamp$cig_rec)
 str(birthsamp$mager)
 str(birthsamp$mracerec)
+str(birthsamp$umhisp)
 
 table(birthsamp$combgest, useNA ='always')
 table(birthsamp$uprevis, useNA ='always')
 table(birthsamp$cig_rec, useNA ='always')
 table(birthsamp$mager, useNA ='always')
 table(birthsamp$mracerec, useNA ='always')
+table(birthsamp$umhisp, useNA ='always')
 
 
 # Clean variables
@@ -43,8 +45,13 @@ birthsamp_clean <- birthsamp |>
       mager < 30 ~ 2,
       mager < 35 ~ 3,
       mager < 40 ~ 4,
-      .default = 5)
+      .default = 5),
+    race_eth_cat = case_when(
+      umhisp %in% c(1,2,3,4) ~ 0, # Hispanic
+      .default = mracerec
+    )
   )
+
 
 # Check variable conversions
 table(birthsamp_clean$combgest, birthsamp_clean$ptb, useNA ='always')
@@ -58,6 +65,9 @@ table(birthsamp_clean$cig_rec_cat, useNA ='always') |> prop.table()
 
 table(birthsamp_clean$mager, birthsamp_clean$mager_cat, useNA ='always')
 table(birthsamp_clean$mager_cat, useNA ='always') |> prop.table()
+
+table(birthsamp_clean$umhisp, birthsamp_clean$race_eth_cat, useNA ='always')
+table(birthsamp_clean$mracerec, birthsamp_clean$race_eth_cat, useNA ='always')
 
 
 # Create factor variables - first group listed is the reference group
@@ -81,10 +91,11 @@ birthsamp_clean$mager_cat <-
                     "35-39",
                     ">= 40"))
 
-birthsamp_clean$mracerec_cat <-
-  factor(birthsamp_clean$mracerec,
-         levels = 1:4,
-         labels = c("White",
+birthsamp_clean$race_eth_cat <-
+  factor(birthsamp_clean$race_eth_cat,
+         levels = 0:4,
+         labels = c("Hispanic",
+                    "White",
                     "Black",
                     "American Indian/Alaskan Native",
                     "Asian/Pacific Islander"))
@@ -93,12 +104,12 @@ birthsamp_clean$mracerec_cat <-
 table(birthsamp_clean$uprevis_cat, useNA ='always') |> prop.table()
 table(birthsamp_clean$cig_rec_cat, useNA ='always') |> prop.table()
 table(birthsamp_clean$mager_cat, useNA ='always') |> prop.table()
-table(birthsamp_clean$mracerec_cat, useNA ='always') |> prop.table()
-table(birthsamp_clean$mracerec, birthsamp_clean$mracerec_cat, useNA ='always')
+table(birthsamp_clean$race_eth_cat, useNA ='always') |> prop.table()
+
 
 
 # Remove rows with missing exposure, outcome, covariate info
-study_vars <- c("ptb","uprevis_cat","cig_rec_cat","mager_cat","mracerec_cat")
+study_vars <- c("ptb","uprevis_cat","cig_rec_cat","mager_cat","race_eth_cat")
 
 birthsamp_clean <- birthsamp_clean |> 
   # if_all() returns TRUE if all study vars are non-missing

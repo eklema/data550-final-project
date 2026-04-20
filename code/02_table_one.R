@@ -17,12 +17,12 @@ var_label(clean_data) <- list(
   ptb = "Preterm birth",
   cig_rec_cat = "Smoked cigarettes during pregnancy",
   mager_cat = "Maternal age",
-  mracerec_cat = "Maternal race"
+  race_eth_cat = "Maternal race/ethnicity"
 )
 
 # Create table one
 table_one <- clean_data |>
-  select("uprevis_cat", "ptb", "cig_rec_cat", "mager_cat", "mracerec_cat") |>
+  select("uprevis_cat", "ptb", "cig_rec_cat", "mager_cat", "race_eth_cat") |>
   tbl_summary(by = uprevis_cat) |>
   modify_caption("**Table 1. Birth characteristics stratified by prenatal care visit attendance**") |> 
   add_overall()

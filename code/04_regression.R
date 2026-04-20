@@ -16,12 +16,12 @@ var_label(clean_data) <- list(
   ptb = "Preterm birth",
   cig_rec_cat = "Smoked cigarettes during pregnancy",
   mager_cat = "Maternal age",
-  mracerec_cat = "Maternal race"
+  race_eth_cat = "Maternal race/ethnicity"
 )
 
 # Fit log binomial regression model
 mod <- glm(
-  ptb ~ uprevis_cat + cig_rec_cat + mager_cat + mracerec_cat,
+  ptb ~ uprevis_cat + cig_rec_cat + mager_cat + race_eth_cat,
   data = clean_data,
   family = binomial (link = 'log')
 )
@@ -36,7 +36,7 @@ regression_table <-
     "**Table 2. Effect of prenatal care visit attendance on preterm birth incidence**") |> 
   modify_table_styling(
     columns = everything(),
-    footnote = "Adjusted for maternal race, age, and smoking status."
+    footnote = "Adjusted for maternal race/ethnicity, age, and smoking status."
   )
 
 regression_table

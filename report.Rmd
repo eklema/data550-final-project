@@ -33,7 +33,7 @@ care visit attendance.
 across varying levels of prenatal care visit attendance.
 3. Fit a regression model to estimate the association between prenatal care
 visit attendance and incidence of preterm birth after adjusting for smoking
-status, maternal age, and race.
+status, maternal age, and race/ethnicity.
 
 
 # Objective 1:
@@ -42,7 +42,7 @@ status, maternal age, and race.
 The sample included a total of 46,529 births with complete information on the
 exposure, outcome, and covariates. Overall, 11% of births were preterm and
 13% were to mothers who had smoked during their pregnancy. The majority of
-births were to White mothers (82%) and mothers aged 20-29 years old (55%).
+births were to White mothers (63%) and mothers aged 20-29 years old (55%).
 
 More than half (57%) of births were to mothers who attended less than 12
 prenatal care visits. These mothers did not meet the recommended frequency of 12
@@ -91,11 +91,11 @@ knitr::include_graphics(
 
 Below are the log binomial regression results for the effect of prenatal care
 visit attendance on preterm birth incidence after adjusting for smoking status,
-maternal age, and race. Compared to mothers who attended less than 12 prenatal
+maternal age, and race/ethnicity. Compared to mothers who attended less than 12 prenatal
 care visits, mothers who met or exceeded the recommended number of visits had
 significantly lower risk of preterm birth. Mothers who completed 12 to 14 prenatal
-care visits had 48% lower risk of preterm birth and mothers who completed 15 or
-more visits had 37% lower risk of preterm birth.
+care visits had 47% lower risk of preterm birth and mothers who completed 15 or
+more visits had 36% lower risk of preterm birth.
 
 ```{r, regression-analysis}
 
