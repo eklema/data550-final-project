@@ -23,6 +23,10 @@ The file organization for this repository is as follows:
 7. `renv.lock`: lists all the packages (and the versions) that are used in
 the project
 8. `renv/`: stores files for activating the project library
+9. `.Rprofile`: sources the file for activating the project library
+10. `report/`: stores the final report (`report.html`) after being built in the
+container
+11. `Dockerfile`: builds the image for compiling the report in a container
 
 
 ## How to synchronize project library with the lockfile
@@ -31,11 +35,28 @@ in a terminal application. You should then receive a message confirming that
 your library is synced with the lockfile.
 
 
-## How to generate the analysis report 
-The analysis report contains an introduction to the data set and presents
-descriptive and regression results for the effect of prenatal care visit attendance
-on the risk of preterm birth.
+## How to generate the report in a Docker container
+**To generate the report in a Docker container, execute `make` or
+`make report/report.html` in a terminal application.**
 
-To generate the report, execute `make report.html` or `make` in a terminal
-application. You can execute the other rules listed in the Makefile if you'd 
-like to generate separate components of the report.
+This target will automatically download the [eklema/finalproj](https://hub.docker.com/repository/docker/eklema/finalproj/general)
+image from Docker Hub and run a container with the `report/` directory on your local
+computer mounted to the `report/` directory in the container. Once the container
+finishes compiling the report (called `report.html`), it should appear in the
+`report/` directory on your local computer.
+
+Please note that the container may take a while to run.
+
+## How to build the Docker image
+If you would like to build the eklema/finalproj image locally, you may do so by
+executing `docker build -t eklema/finalproj .` However, please note that this
+process may take a long time and is not necessary since the image is able to be
+downloaded directly from Docker Hub as previously mentioned.
+
+
+## Alternative way to generate the report on a local machine
+If you would like to compile the report locally, you may do so by executing
+`make report.html` in a terminal application. This will save the `report.html` file
+in the project root directory. Make sure to synchronize the project library
+before doing this.
+
