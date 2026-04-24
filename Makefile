@@ -1,4 +1,11 @@
-report/report.html: code/05_render_report.R report.Rmd \
+## DOCKER-ASSOCIATED RULES (run on a local machine)
+# rule to build report automatically in a container
+report/report.html:
+	docker run -v /"$$(pwd)/report":/project/report eklema/finalproj
+
+
+## REPORT-ASSOCIATED RULES (run in the docker container)
+report.html: code/05_render_report.R report.Rmd \
   descriptive_analysis regression_analysis
 	Rscript code/05_render_report.R
 
@@ -28,5 +35,5 @@ install:
 	
 .PHONY: clean
 clean:
-	rm -f output/*.rds && rm -f output/*.png && rm -f report/*.html 
-	
+	rm -f output/*.rds && rm -f output/*.png && rm -f *.html && rm -f report/*.html
+
