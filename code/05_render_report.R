@@ -5,5 +5,6 @@ here::i_am(
 library(rmarkdown)
 
 render(
-  "report.Rmd"
+  "report.Rmd",
+  output_file = 'report/report.html'
 )

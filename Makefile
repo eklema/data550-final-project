@@ -1,4 +1,4 @@
-report.html: code/05_render_report.R report.Rmd \
+report/report.html: code/05_render_report.R report.Rmd \
   descriptive_analysis regression_analysis
 	Rscript code/05_render_report.R
 
@@ -28,5 +28,5 @@ install:
 	
 .PHONY: clean
 clean:
-	rm -f output/*.rds && rm -f output/*.png && rm -f *.html
+	rm -f output/*.rds && rm -f output/*.png && rm -f report/*.html 
 	

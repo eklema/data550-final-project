@@ -9,6 +9,7 @@ clean_data <- readRDS(
 
 library(gtsummary)
 library(labelled)
+library(broom.helpers)
 
 # Create labels for variables
 var_label(clean_data) <- list(
